@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,9 +8,13 @@ using UserData;
 public class UserManager : MonoBehaviour
 {
     private int _money;
+
+    public PatientManager PatientManager;
+    public Transform UserCar;
     
-    public Patient CurrentPatient;
     
+    public PickedPatient CurrentPatient;
+
 
     public int Money
     {
@@ -42,7 +47,20 @@ public class UserManager : MonoBehaviour
 
     public void GetNewPatient()
     {
-        CurrentPatient = new Patient(Time.time, CurrentDifficultyLvl);
+        var pos = new Vector2(UserCar.position.x, UserCar.position.y);
+        
+        var patient = PatientManager.TryGetPatient(pos, CurrentDifficultyLvl);
+        if (patient != null)
+            CurrentPatient = new PickedPatient(patient, Time.time);
+    }
+
+    public void DropPatient()
+    {
+        if (CurrentPatient == null)
+            throw new Exception("Try to drop null patient");
+
+        var paid = CurrentPatient.CalculateTax();
+        Money += paid;
     }
 
     public void CalculateDifficulty()

@@ -9,13 +9,10 @@ namespace UserData
     public List<Disease> Diseases;
     public int InitialPaid;
 
-    public float PickupTime;
-
     private static Random _random = new Random(); 
 
-    public Patient(float pickupTime, int difficultyLvl)
+    public Patient(int difficultyLvl)
     {
-      PickupTime = pickupTime;
       Diseases = new List<Disease>();
 
       var rand = new Random();
