@@ -49,6 +49,15 @@ namespace StaticData
         }
       };
 
+    public static Dictionary<int, int> InitialPaidByLvl = new Dictionary<int, int>()
+    {
+      { 1, 500 },
+      { 2, 750 },
+      { 3, 1000 },
+    };
+
+    public static float StressPerSecond = 15f;
+
     public static float MinTravelDistance = 20f;
   }
 }

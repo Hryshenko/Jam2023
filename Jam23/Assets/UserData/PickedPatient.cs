@@ -1,3 +1,5 @@
+using System;
+using System.Linq;
 using System.Numerics;
 
 namespace UserData
@@ -6,7 +8,8 @@ namespace UserData
   {
     public Patient Patient;
     public float PickUpTime;
-    public int StressPercent;
+    public float StressPercent;
+    public float ExpectedTravelTime;
 
     public Vector2 Destination;
 
@@ -24,12 +27,24 @@ namespace UserData
       return Patient.InitialPaid;
     }
 
-    public void IncreaseStress()
+    public void IncreaseStress(float stressPoints)
     {
-      
+      StressPercent += stressPoints;
     }
 
-    public void GenerateDestination()
+    public bool CheckIsTrigger(Disease disease)
+    {
+      return Patient.Diseases.Contains(disease);
+    }
+
+    private void GenerateExpectedTravelTime()
+    {
+      var rand = new Random();
+      var time = rand.Next(30, 60);
+      ExpectedTravelTime = time;
+    }
+
+    private void GenerateDestination()
     {
       var dest = new Vector2(1, 1);
       Destination = dest;

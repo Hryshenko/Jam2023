@@ -14,6 +14,7 @@ namespace UserData
 
     public Patient(int difficultyLvl)
     {
+      InitialPaid = PatientStaticData.InitialPaidByLvl[difficultyLvl];
       Diseases = new List<Disease>();
 
       var rand = new Random();

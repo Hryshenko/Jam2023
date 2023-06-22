@@ -30,7 +30,11 @@ public class UserManager : MonoBehaviour
         }
     }
 
+    public int Health = UserStaticData.InitialHealth;
+
     private int CurrentDifficultyLvl = 0;
+
+    private bool _isPatientStress;
     
     // Start is called before the first frame update
     void Start()
@@ -42,6 +46,13 @@ public class UserManager : MonoBehaviour
     void Update()
     {
         Money++;
+
+        if (_isPatientStress)
+        {
+            var deltaTime = Time.deltaTime;
+            var deltaStress = PatientStaticData.StressPerSecond * deltaTime;
+            CurrentPatient.IncreaseStress(deltaStress);
+        }
     }
 
     public void GetNewPatient()
@@ -60,6 +71,45 @@ public class UserManager : MonoBehaviour
 
         var paid = CurrentPatient.CalculatePaid();
         Money += paid;
+    }
+
+    public void CancelPatient()
+    {
+        CurrentPatient = null;
+        Health--;
+    }
+
+    public void EntryAnyStressArea(Disease diseaseArea)
+    {
+        if (CurrentPatient == null)
+            return;
+
+        if (CurrentPatient.CheckIsTrigger(diseaseArea))
+            BeginStress();
+    }
+
+    public void ExitStressArea()
+    {
+        if (CurrentPatient == null)
+            return;
+
+        _isPatientStress = false;
+        Debug.Log("Stress ended");
+    }
+
+    private void CheckStress()
+    {
+        if (CurrentPatient.StressPercent < 100)
+            return;
+        
+        CancelPatient();
+        Debug.Log("Patient canceled");
+    }
+    
+    private void BeginStress()
+    {
+        _isPatientStress = true;
+        Debug.Log("Stress Started");
     }
 
     private void CalculateDifficulty()
