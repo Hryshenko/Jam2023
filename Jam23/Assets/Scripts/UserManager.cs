@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using StaticData;
 using UnityEngine;
 using UserData;
 
@@ -29,8 +30,6 @@ public class UserManager : MonoBehaviour
         }
     }
 
-    public int[] DifficultyMilestones = new[] { 2000, 4000, 7000 };
-    
     public int CurrentDifficultyLvl = 0;
     
     // Start is called before the first frame update
@@ -63,13 +62,21 @@ public class UserManager : MonoBehaviour
         Money += paid;
     }
 
-    public void CalculateDifficulty()
+    private void CalculateDifficulty()
     {
-        if (CurrentDifficultyLvl >= (DifficultyMilestones.Count() - 1)
-        || Money <= DifficultyMilestones[CurrentDifficultyLvl])
+        if (CurrentDifficultyLvl >= (PatientStaticData.DifficultyMilestones.Count() - 1)
+        || Money <= PatientStaticData.DifficultyMilestones[CurrentDifficultyLvl])
             return;
 
+        if (Money >= PatientStaticData.FinalPoint)
+            EndGame();
+        
         CurrentDifficultyLvl++;
         CalculateDifficulty();
+    }
+
+    private void EndGame()
+    {
+        
     }
 }
