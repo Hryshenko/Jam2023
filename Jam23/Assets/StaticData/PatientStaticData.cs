@@ -42,8 +42,8 @@ namespace StaticData
           2, new Dictionary<int, int>()
           {
             { 1, 33 },
-            { 1, 33 },
-            { 1, 34 }
+            { 2, 33 },
+            { 3, 34 }
           }
 
         }
