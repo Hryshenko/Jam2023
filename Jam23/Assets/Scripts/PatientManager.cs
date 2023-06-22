@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using StaticData;
 using UnityEngine;
 using UserData;
 
@@ -21,7 +22,7 @@ public class PatientManager : MonoBehaviour
 
     public Patient TryGetPatient(Vector2 userPos, int difficultyLvl)
     {
-        if (!AvailablePatientPositions.Contains(userPos))
+        if (!AvailablePatientPositions.Any(p => Vector2.Distance(userPos, p) <= PatientStaticData.PickUpRange))
             return null;
 
         AvailablePatientPositions.Remove(userPos);

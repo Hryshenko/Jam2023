@@ -5,6 +5,8 @@ namespace StaticData
 {
   public static class PatientStaticData
   {
+    public static float PickUpRange = 10f;
+    
     public static int[] DifficultyMilestones = new[]
     {
       1000, 5000

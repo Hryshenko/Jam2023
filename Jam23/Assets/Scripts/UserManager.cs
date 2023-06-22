@@ -57,9 +57,7 @@ public class UserManager : MonoBehaviour
 
     public void GetNewPatient()
     {
-        var pos = new Vector2(UserCar.position.x, UserCar.position.y);
-        
-        var patient = PatientManager.TryGetPatient(pos, CurrentDifficultyLvl);
+        var patient = PatientManager.TryGetPatient(GetCarPos(), CurrentDifficultyLvl);
         if (patient != null)
             CurrentPatient = new PickedPatient(patient, Time.time);
     }
@@ -69,6 +67,9 @@ public class UserManager : MonoBehaviour
         if (CurrentPatient == null)
             throw new Exception("Try to drop null patient");
 
+        if (Vector2.Distance(GetCarPos(), CurrentPatient.Destination) > PatientStaticData.PickUpRange)
+            return;
+        
         var paid = CurrentPatient.CalculatePaid();
         Money += paid;
     }
@@ -128,5 +129,11 @@ public class UserManager : MonoBehaviour
     private void EndGame()
     {
         
+    }
+
+    private Vector2 GetCarPos()
+    {
+        var pos = UserCar.position;
+        return new Vector2(pos.x, pos.y);
     }
 }
