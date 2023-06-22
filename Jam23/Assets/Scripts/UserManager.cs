@@ -30,7 +30,7 @@ public class UserManager : MonoBehaviour
         }
     }
 
-    public int CurrentDifficultyLvl = 0;
+    private int CurrentDifficultyLvl = 0;
     
     // Start is called before the first frame update
     void Start()

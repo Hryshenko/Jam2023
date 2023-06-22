@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using StaticData;
 
 namespace UserData
 {
@@ -16,7 +17,19 @@ namespace UserData
       Diseases = new List<Disease>();
 
       var rand = new Random();
-      for (var i = 0; i < difficultyLvl; i++)
+      var num = rand.Next(0, 100);
+      var countOfDeseases = 0;
+
+      foreach (var pair in PatientStaticData.DiseasesChancesPerLvl[difficultyLvl])
+      {
+        if (num < pair.Value)
+        {
+          countOfDeseases = pair.Key;
+          break;
+        }
+      }
+      
+      for (var i = 0; i < countOfDeseases; i++)
         Diseases.Add((Disease) rand.Next(1, difficultyLvl + 1));
     }
   }

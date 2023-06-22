@@ -17,7 +17,7 @@ public class MoneyScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log("Difficulty: " + _userManager.CurrentDifficultyLvl);
+        //Debug.Log("Difficulty: " + _userManager.CurrentDifficultyLvl);
         UserMoney.text = _text + _userManager.Money.ToString();
     }
 }
