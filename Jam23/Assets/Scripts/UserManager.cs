@@ -45,7 +45,7 @@ public class UserManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Money++;
+        //Money++;
 
         if (_isPatientStress)
         {
@@ -57,9 +57,16 @@ public class UserManager : MonoBehaviour
 
     public void GetNewPatient()
     {
+        if (CurrentPatient != null)
+            return;
+        
         var patient = PatientManager.TryGetPatient(GetCarPos(), CurrentDifficultyLvl);
         if (patient != null)
+        {
             CurrentPatient = new PickedPatient(patient, Time.time);
+            Debug.Log($"InitialPaid: {patient.InitialPaid}");
+        }
+        Debug.Log($"No available patient");
     }
 
     public string GetPatientDiseases()
@@ -88,6 +95,8 @@ public class UserManager : MonoBehaviour
         
         var paid = CurrentPatient.CalculatePaid();
         Money += paid;
+
+        EndTravel();
     }
 
     public void CancelPatient()
@@ -131,13 +140,17 @@ public class UserManager : MonoBehaviour
 
     private void CalculateDifficulty()
     {
-        if (CurrentDifficultyLvl >= (PatientStaticData.DifficultyMilestones.Count() - 1)
+        Debug.Log($"Current diffic {CurrentDifficultyLvl}");
+        Debug.Log($"Count {PatientStaticData.DifficultyMilestones.Length}");
+        Debug.Log("");
+        if (CurrentDifficultyLvl > (PatientStaticData.DifficultyMilestones.Length - 1)
         || Money <= PatientStaticData.DifficultyMilestones[CurrentDifficultyLvl])
             return;
 
+        Debug.Log("");
         if (Money >= PatientStaticData.FinalPoint)
             EndGame();
-        
+        Debug.Log("");
         CurrentDifficultyLvl++;
         CalculateDifficulty();
     }
@@ -151,5 +164,11 @@ public class UserManager : MonoBehaviour
     {
         var pos = UserCar.position;
         return new Vector2(pos.x, pos.y);
+    }
+
+    private void EndTravel()
+    {
+        Debug.Log("End travel");
+        CurrentPatient = null;
     }
 }
