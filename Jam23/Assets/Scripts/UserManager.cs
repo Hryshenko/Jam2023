@@ -59,7 +59,7 @@ public class UserManager : MonoBehaviour
         if (CurrentPatient == null)
             throw new Exception("Try to drop null patient");
 
-        var paid = CurrentPatient.CalculateTax();
+        var paid = CurrentPatient.CalculatePaid();
         Money += paid;
     }
 
