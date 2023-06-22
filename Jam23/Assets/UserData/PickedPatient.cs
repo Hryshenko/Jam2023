@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using Random = System.Random;
 
@@ -48,5 +49,7 @@ namespace UserData
       var dest = new Vector2(1, 1);
       Destination = dest;
     }
+
+    public List<Disease> GetPatientDiseases() => Patient.Diseases;
   }
 }

@@ -62,6 +62,22 @@ public class UserManager : MonoBehaviour
             CurrentPatient = new PickedPatient(patient, Time.time);
     }
 
+    public string GetPatientDiseases()
+    {
+        var resp = "";
+        foreach (var disease in CurrentPatient.GetPatientDiseases())
+        {
+            resp += $"{disease}\n";
+        }
+
+        return resp;
+    }
+
+    public string GetDiseaseStory()
+    {
+        return "DiseaseStory";
+    }
+
     public void DropPatient()
     {
         if (CurrentPatient == null)
