@@ -1,19 +1,38 @@
+using System.Numerics;
+
 namespace UserData
 {
   public class PickedPatient
   {
     public Patient Patient;
     public float PickUpTime;
+    public int StressPercent;
 
-    public PickedPatient(Patient patient, float pickUpTime)
+    public Vector2 Destination;
+
+    public PickedPatient(Patient patient, float time)
     {
-      PickUpTime = pickUpTime;
       Patient = patient;
+      PickUpTime = time;
+      StressPercent = 0;
+
+      GenerateDestination();
     }
 
-    public int CalculateTax()
+    public int CalculatePaid()
     {
       return Patient.InitialPaid;
+    }
+
+    public void IncreaseStress()
+    {
+      
+    }
+
+    public void GenerateDestination()
+    {
+      var dest = new Vector2(1, 1);
+      Destination = dest;
     }
   }
 }
