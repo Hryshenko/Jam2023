@@ -50,6 +50,19 @@ namespace UserData
       Destination = dest;
     }
 
-    public List<Disease> GetPatientDiseases() => Patient.Diseases;
+    public Dictionary<Disease, int> GetPatientDiseases()
+    {
+      var dis = new Dictionary<Disease, int>();
+
+      foreach (var disease in Patient.Diseases)
+      {
+        if (!dis.ContainsKey(disease))
+          dis.Add(disease, 1);
+        else
+          dis[disease]++;
+      }
+
+      return dis;
+    }
   }
 }

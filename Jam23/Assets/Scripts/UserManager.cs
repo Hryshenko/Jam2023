@@ -69,15 +69,9 @@ public class UserManager : MonoBehaviour
         Debug.Log($"No available patient");
     }
 
-    public string GetPatientDiseases()
+    public Dictionary<Disease, int> GetPatientDiseases()
     {
-        var resp = "";
-        foreach (var disease in CurrentPatient.GetPatientDiseases())
-        {
-            resp += $"{disease}\n";
-        }
-
-        return resp;
+        return CurrentPatient.GetPatientDiseases();
     }
 
     public string GetDiseaseStory()
