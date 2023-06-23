@@ -6,7 +6,9 @@ namespace StaticData
   public static class PatientStaticData
   {
     public static float PickUpRange = 10f;
-    public static int CountOfDiseases = 4;
+    public static int CountOfDiseases = 6;
+
+    public static float StressIncreasePerRotateWithED = 50f;
     
     public static int[] DifficultyMilestones = new[]
     {

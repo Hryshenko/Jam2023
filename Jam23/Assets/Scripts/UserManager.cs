@@ -35,8 +35,8 @@ public class UserManager : MonoBehaviour
     private int CurrentDifficultyLvl = 0;
 
     private bool _isPatientStress;
-    private Disease _stressBecouse;
-    
+    private List<Disease> ActiveTriggers = new List<Disease>();
+
     // Start is called before the first frame update
     void Start()
     {
@@ -48,10 +48,10 @@ public class UserManager : MonoBehaviour
     {
         //Money++;
 
-        if (_isPatientStress)
+        if (_isPatientStress && CurrentPatient != null)
         {
             var deltaTime = Time.deltaTime;
-            CurrentPatient.IncreaseStress(deltaTime, _stressBecouse);
+            CurrentPatient.IncreaseStress(deltaTime, ActiveTriggers);
             CheckStress();
         }
     }
@@ -105,28 +105,58 @@ public class UserManager : MonoBehaviour
 
     public void EntryAnyStressArea(Disease diseaseArea)
     {
-        if (CurrentPatient == null)
+        if (ActiveTriggers.Contains(diseaseArea))
+        {
+            Debug.Log($"Already in stress area {diseaseArea}");
             return;
-
-        if (CurrentPatient.CheckIsTrigger(diseaseArea))
-            BeginStress(diseaseArea);
+        }
+        
+        _isPatientStress = true;
+        ActiveTriggers.Add(diseaseArea);
     }
-    
+
+    public void TriggerTrigger(Disease dis)
+    {
+        if (!CurrentPatient.CheckIsTrigger(dis))
+            return;
+        
+        if (dis == Disease.ED )
+        {
+            CurrentPatient.InstantStressIncrease(PatientStaticData.StressIncreasePerRotateWithED);
+        }
+    }
+
+    #region StressTestMethods
+
     public void EntryAnyStressAreaTestOnly()
     {
         var diseaseArea = Disease.Depression;
         if (CurrentPatient == null)
             return;
 
-        if (CurrentPatient.CheckIsTrigger(diseaseArea))
-            BeginStress(diseaseArea);
+        _isPatientStress = true;
+        ActiveTriggers.Add(diseaseArea);
     }
 
-    public void ExitStressArea()
+    public void ExitStressAreaTestOnly()
     {
-        _isPatientStress = false;
-        _stressBecouse = Disease.None;
-        Debug.Log("Stress ended");
+        var triggerArea = Disease.Depression;
+        ActiveTriggers.Remove(triggerArea);
+        if (!ActiveTriggers.Any())
+            _isPatientStress = false;
+        
+        Debug.Log($"Strop trigger {triggerArea}");
+    }
+    
+    #endregion
+
+    public void ExitStressArea(Disease triggerArea)
+    {
+        ActiveTriggers.Remove(triggerArea);
+        if (!ActiveTriggers.Any())
+            _isPatientStress = false;
+        
+        Debug.Log($"Strop trigger {triggerArea}");
     }
 
     private void CheckStress()
@@ -135,14 +165,7 @@ public class UserManager : MonoBehaviour
             return;
         
         CancelPatient();
-        Debug.Log("Patient canceled");
-    }
-    
-    private void BeginStress(Disease disease)
-    {
-        _isPatientStress = true;
-        _stressBecouse = disease;
-        Debug.Log("Stress Started");
+        Debug.Log("Patient canceled | out of stress");
     }
 
     private void CalculateDifficulty()

@@ -28,10 +28,20 @@ namespace UserData
       return Patient.InitialPaid;
     }
 
-    public void IncreaseStress(float deltaTime, Disease disease)
+    public void IncreaseStress(float deltaTime, List<Disease> diseases)
     {
-      var diseaseLvl = GetPatientDiseases()[disease];
-      var stressPoints = PatientStaticData.StressPerSecond * deltaTime * diseaseLvl;
+      var diseaseLvl = GetPatientDiseases();
+      foreach (var dis in diseases)
+      {
+        if (diseaseLvl.ContainsKey(dis))
+        {
+          StressPercent += PatientStaticData.StressPerSecond * deltaTime * diseaseLvl[dis];
+        }
+      }
+    }
+
+    public void InstantStressIncrease(float stressPoints)
+    {
       StressPercent += stressPoints;
     }
 

@@ -22,6 +22,7 @@ public class PatientStressBar : MonoBehaviour
         {
             StressBar.value = 0;
             //TODO: diable stressBar
+            return;
         }
 
         StressBar.value = patient.StressPercent;

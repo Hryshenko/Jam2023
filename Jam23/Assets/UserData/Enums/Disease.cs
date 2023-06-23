@@ -3,9 +3,11 @@ namespace UserData
   public enum Disease
   {
     None = 0,
-    Depression = 1,
-    PTSR = 2,
-    AfraidWater = 3,
-    AfraidDark = 4,
+    PTSD = 1,
+    Depression = 2,
+    Phobia = 3,
+    Anxiety = 4,
+    Stress = 5,
+    ED = 6,
   }
 }
