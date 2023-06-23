@@ -71,7 +71,10 @@ public class UserManager : MonoBehaviour
 
     public Dictionary<Disease, int> GetPatientDiseases()
     {
-        return CurrentPatient.GetPatientDiseases();
+        if (CurrentPatient != null)
+            return CurrentPatient.GetPatientDiseases();
+
+        return null;
     }
 
     public string GetDiseaseStory()

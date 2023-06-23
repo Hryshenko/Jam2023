@@ -37,15 +37,15 @@ namespace StaticData
           1, new Dictionary<int, int>()
           {
             { 1, 50 },
-            { 2, 50 }
+            { 2, 100 }
           }
         },
         {
           2, new Dictionary<int, int>()
           {
             { 1, 33 },
-            { 2, 33 },
-            { 3, 34 }
+            { 2, 66 },
+            { 3, 100 }
           }
 
         }
