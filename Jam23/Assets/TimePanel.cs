@@ -21,7 +21,7 @@ public class TimePanel : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log("Start Update image");
+        //Debug.Log("Start Update image");
         var patient = UserManager.CurrentPatient;
         if (patient == null)
         {
@@ -30,8 +30,7 @@ public class TimePanel : MonoBehaviour
             return;
         }
         
-        var timeStart = patient.PickUpTime;
-        var timeEnd = patient.ExpectedTravelTime;
+        var timeEnd = patient.ExpectedArrivalTime;
 
         var deltaTime = timeEnd - Time.time;
         bool isNegative = false;

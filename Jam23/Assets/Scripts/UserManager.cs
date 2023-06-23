@@ -16,6 +16,8 @@ public class UserManager : MonoBehaviour
     
     public PickedPatient CurrentPatient;
 
+    public GameObject PatientHistory;
+
 
     public int Money
     {
@@ -66,8 +68,9 @@ public class UserManager : MonoBehaviour
         {
             CurrentPatient = new PickedPatient(patient, Time.time, GetCarPos());
             Debug.Log($"InitialPaid: {patient.InitialPaid}");
+            PatientHistory.SetActive(true);
+            return;
         }
-        Debug.Log($"No available patient");
     }
 
     public Dictionary<Disease, int> GetPatientDiseases()
@@ -78,9 +81,9 @@ public class UserManager : MonoBehaviour
         return null;
     }
 
-    public string GetDiseaseStory()
+    public PatientStoryData GetDiseaseStory()
     {
-        return "DiseaseStory";
+        return StoryGenerator.GenerateDiseaseStory(this);
     }
 
     public void DropPatient()

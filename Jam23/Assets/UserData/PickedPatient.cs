@@ -11,7 +11,7 @@ namespace UserData
     public Patient Patient;
     public float PickUpTime;
     public float StressPercent;
-    public float ExpectedTravelTime;
+    public float ExpectedArrivalTime;
 
     public Vector2 Destination;
 
@@ -22,12 +22,17 @@ namespace UserData
       StressPercent = 0;
 
       GenerateDestination(carPos);
-      GenerateExpectedTravelTime();
+      GenerateExpectedArrivalTimeTime();
     }
 
     public int CalculatePaid()
     {
-      return Patient.InitialPaid;
+      var initialPaid = Patient.InitialPaid;
+
+      var timeLeft = (int)(ExpectedArrivalTime - Time.time);
+        
+      var tax = initialPaid + ExpectedArrivalTime * timeLeft;
+      return (int)tax;
     }
 
     public void IncreaseStress(float deltaTime, List<Disease> diseases)
@@ -52,11 +57,11 @@ namespace UserData
       return Patient.Diseases.Contains(disease);
     }
 
-    private void GenerateExpectedTravelTime()
+    private void GenerateExpectedArrivalTimeTime()
     {
       var rand = new Random();
       var time = rand.Next(30, 70) + Time.time;
-      ExpectedTravelTime = time;
+      ExpectedArrivalTime = time;
     }
 
     private void GenerateDestination(Vector2 carPos)

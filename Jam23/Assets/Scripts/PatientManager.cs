@@ -20,8 +20,8 @@ public class PatientManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (_isProfilesGenerated) GenerateProfiles();
-        if (AvailablePatientPositions == null)
+        if (!_isProfilesGenerated) GenerateProfiles();
+        if (AvailablePatientPositions == null || AvailablePatientPositions.Count == 0)
             GenerateAvailablePatients();
     }
 
@@ -51,6 +51,7 @@ public class PatientManager : MonoBehaviour
 
         foreach (var sp in PatientStaticData.ListOfAvailablePatientSpawnPoints)
         {
+            Debug.Log("Add patient");
             AvailablePatientPositions.Add(sp);
         }
     }
@@ -65,5 +66,7 @@ public class PatientManager : MonoBehaviour
                 PatientStaticData.PatientProfiles = new List<PatientProfile>();
             PatientStaticData.PatientProfiles.Add(pat);
         }
+
+        _isProfilesGenerated = true;
     }
 }
