@@ -41,6 +41,7 @@ public class CameraController1 : MonoBehaviour
 			yield return null;
 
 		transform.position = TargetPoint;
+		CameraHolder.SetParent(TargetCar.transform);
 	}
 
 	private void Update()
