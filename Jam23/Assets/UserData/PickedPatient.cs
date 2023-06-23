@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using StaticData;
 using UnityEngine;
 using Random = System.Random;
@@ -14,13 +15,13 @@ namespace UserData
 
     public Vector2 Destination;
 
-    public PickedPatient(Patient patient, float time)
+    public PickedPatient(Patient patient, float time, Vector2 carPos)
     {
       Patient = patient;
       PickUpTime = time;
       StressPercent = 0;
 
-      GenerateDestination();
+      GenerateDestination(carPos);
       GenerateExpectedTravelTime();
     }
 
@@ -54,14 +55,21 @@ namespace UserData
     private void GenerateExpectedTravelTime()
     {
       var rand = new Random();
-      var time = rand.Next(30, 60) + Time.time;
-      ExpectedTravelTime = 10;
+      var time = rand.Next(30, 70) + Time.time;
+      ExpectedTravelTime = time;
     }
 
-    private void GenerateDestination()
+    private void GenerateDestination(Vector2 carPos)
     {
-      var dest = new Vector2(1, 1);
-      Destination = dest;
+      var availableDests = PatientStaticData.ListOfAvailablePatientSpawnPoints
+        .Where(p => Vector2.Distance(carPos, p) >= PatientStaticData.MinTravelDistance)
+        .ToList();
+
+      var count = availableDests.Count;
+      var rand = new Random();
+      var id = rand.Next(0, count);
+
+      Destination = availableDests[id];
     }
 
     public Dictionary<Disease, int> GetPatientDiseases()

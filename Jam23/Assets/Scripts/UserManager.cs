@@ -64,7 +64,7 @@ public class UserManager : MonoBehaviour
         var patient = PatientManager.TryGetPatient(GetCarPos(), CurrentDifficultyLvl);
         if (patient != null)
         {
-            CurrentPatient = new PickedPatient(patient, Time.time);
+            CurrentPatient = new PickedPatient(patient, Time.time, GetCarPos());
             Debug.Log($"InitialPaid: {patient.InitialPaid}");
         }
         Debug.Log($"No available patient");

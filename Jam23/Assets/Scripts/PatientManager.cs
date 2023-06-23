@@ -7,7 +7,7 @@ using UserData;
 
 public class PatientManager : MonoBehaviour
 {
-    public List<Vector2> AvailablePatientPositions = new List<Vector2>(){new Vector2(1, 1)}; 
+    public List<Vector2> AvailablePatientPositions; 
     // Start is called before the first frame update
     void Start()
     {
@@ -17,8 +17,8 @@ public class PatientManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!AvailablePatientPositions.Any())
-            AvailablePatientPositions.Add(new Vector2(0, 0));
+        if (AvailablePatientPositions == null)
+            GenerateAvailablePatients();
     }
 
     public Patient TryGetPatient(Vector2 userPos, int difficultyLvl)
@@ -39,5 +39,15 @@ public class PatientManager : MonoBehaviour
         AvailablePatientPositions.Remove(patientPos);
         Debug.Log($"Available patients: {AvailablePatientPositions.Count}");
         return new Patient(difficultyLvl);
+    }
+
+    private void GenerateAvailablePatients()
+    {
+        AvailablePatientPositions = new List<Vector2>();
+
+        foreach (var sp in PatientStaticData.ListOfAvailablePatientSpawnPoints)
+        {
+            AvailablePatientPositions.Add(sp);
+        }
     }
 }
