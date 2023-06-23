@@ -21,6 +21,7 @@ namespace UserData
       StressPercent = 0;
 
       GenerateDestination();
+      GenerateExpectedTravelTime();
     }
 
     public int CalculatePaid()
@@ -53,8 +54,8 @@ namespace UserData
     private void GenerateExpectedTravelTime()
     {
       var rand = new Random();
-      var time = rand.Next(30, 60);
-      ExpectedTravelTime = time;
+      var time = rand.Next(30, 60) + Time.time;
+      ExpectedTravelTime = 10;
     }
 
     private void GenerateDestination()
