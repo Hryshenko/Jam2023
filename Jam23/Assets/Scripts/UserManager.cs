@@ -104,6 +104,11 @@ public class UserManager : MonoBehaviour
     {
         CurrentPatient = null;
         Health--;
+
+        if (Health == 0)
+        {
+            LoseGame();
+        }
     }
 
     public void EntryAnyStressArea(Disease diseaseArea)
@@ -182,15 +187,15 @@ public class UserManager : MonoBehaviour
 
         Debug.Log("");
         if (Money >= PatientStaticData.FinalPoint)
-            EndGame();
+            WinGame();
         Debug.Log("");
         CurrentDifficultyLvl++;
         CalculateDifficulty();
     }
 
-    private void EndGame()
+    private void WinGame()
     {
-        
+        Debug.Log("Win Game");
     }
 
     private Vector2 GetCarPos()
@@ -203,5 +208,10 @@ public class UserManager : MonoBehaviour
     {
         Debug.Log("End travel");
         CurrentPatient = null;
+    }
+
+    public void LoseGame()
+    {
+        Debug.Log("Death end");
     }
 }
