@@ -10,7 +10,7 @@ public class TimePanel : MonoBehaviour
     public Image Image;
 
     public Color InitialColor = new Color(124,221,139,223);
-
+    public Color NoneColor = new Color(255, 255, 255, 30);
     public Color WarningColor = new Color(214, 96, 96, 223);
     // Start is called before the first frame update
     void Start()
@@ -25,7 +25,7 @@ public class TimePanel : MonoBehaviour
         var patient = UserManager.CurrentPatient;
         if (patient == null)
         {
-            Image.color = InitialColor;
+            Image.color = NoneColor;
             Text.text = "00:00";
             return;
         }
