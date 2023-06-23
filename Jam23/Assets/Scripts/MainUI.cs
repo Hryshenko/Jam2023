@@ -12,12 +12,10 @@ public class MainUI : MonoBehaviour
         MainMenu.SetActive(false);
         AudioManager.Instance.PlayClick();
         //StartGame
-        Debug.LogError("StartGame");
     }
 
     public void ExitGame()
     {
-        Debug.LogError("ExitGame");
         AudioManager.Instance.PlayClick();
         Application.Quit();
     }
