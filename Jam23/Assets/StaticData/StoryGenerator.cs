@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UserData;
@@ -6,9 +7,23 @@ namespace StaticData
 {
   public static class StoryGenerator
   {
-    public static string GenerateDiseaseStory(UserManager manager)
+    public static PatientStoryData GenerateDiseaseStory(UserManager manager)
     {
-      return "test";
+      var rand = new System.Random();
+      var id = rand.Next(0, PatientStaticData.PatientProfiles.Count);
+      var p = PatientStaticData.PatientProfiles[id];
+
+      var resp = $"{p.Name}, {p.Age} років, {p.City}. Через пережите за останні півтора роки пасажира турбує ";
+
+      foreach (var pair in manager.CurrentPatient.GetPatientDiseases())
+      {
+        var lvl = LvlNames[pair.Value];
+        var disease = DiseaseNames[pair.Key];
+        var avoid = DiseaseAvoidStrings[pair.Key];
+        var str = $"{disease}, {lvl} стадія, {avoid}, ";
+        resp += str;
+      }
+      return new PatientStoryData(){Photo = p.Photo, Story = resp};
     }
 
     public static string GenerateDiseaseAnnotation(UserManager manager)
@@ -64,6 +79,17 @@ namespace StaticData
       { 2, "Середня" },
       { 3, "Важка" },
     };
+
+    public static Dictionary<Disease, string> DiseaseAvoidStrings = new Dictionary<Disease, string>()
+    {
+      { Disease.PTSD, "уникайте гучних звуків або виробництва" },
+      { Disease.Depression, "уникайте води" },
+      { Disease.Phobia, "унекайте темряви" },
+      { Disease.Anxiety, "уникайте мостів" },
+      { Disease.Stress, "уникайте швидкості вище 70км/г" },
+      { Disease.ED, "уникайте поворотів ліворуч" },
+    };
+
   }
 
   public class DiseaseData
@@ -71,5 +97,11 @@ namespace StaticData
     public Disease Disease;
     public Color Color;
     public int Lvl;
+  }
+
+  public class PatientStoryData
+  {
+    public string Story;
+    public Sprite Photo;
   }
 }

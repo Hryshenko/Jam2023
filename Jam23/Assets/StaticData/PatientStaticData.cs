@@ -77,5 +77,40 @@ namespace StaticData
     public static float StressPerSecond = 15f;
 
     public static float MinTravelDistance = 300f;
+
+    public static Dictionary<string, PatientProfile> PatientEmptyProfiles = new Dictionary<string, PatientProfile>()
+    {
+      {"21", new PatientProfile("Олександр","Чоловік","Львів",28,"Юрист")},
+      {"22", new PatientProfile("Ігор","Чоловік","Київ",34,"Архітектор")},
+      {"23", new PatientProfile("Михайло","Чоловік","Харків",22,"Консультант")},
+      {"24", new PatientProfile("Іван","Чоловік","Дніпро",45,"Викладач")},
+      {"25", new PatientProfile("Павло","Чоловік","Луцьк",58,"Маркетолог")},
+      {"26", new PatientProfile("Олег","Чоловік","Донецьк",68,"Лікар")},
+      {"27", new PatientProfile("Андрій","Чоловік","Чернігів",27,"Тренер")},
+      {"28", new PatientProfile("Максим","Чоловік","Хмельницький",39,"Журналіст")},
+      {"29", new PatientProfile("Оксана","Жінка","Львів",27,"Інструктор")},
+      {"30", new PatientProfile("Тетяна","Жінка","Луганськ",34,"Журналіст")},
+    };
+
+    public static List<PatientProfile> PatientProfiles;
+  }
+  
+  public class PatientProfile
+  {
+    public Sprite Photo;
+    public string Gender;
+    public string Name;
+    public string City;
+    public int Age;
+    public string Work;
+
+    public PatientProfile(string name, string gender, string city, int age, string work)
+    {
+      Name = name;
+      Gender = gender;
+      City = city;
+      Age = age;
+      Work = work;
+    }
   }
 }

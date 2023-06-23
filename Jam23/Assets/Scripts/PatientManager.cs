@@ -7,8 +7,11 @@ using UserData;
 
 public class PatientManager : MonoBehaviour
 {
+    public List<Sprite> Photos;
     public List<Vector2> AvailablePatientPositions; 
     // Start is called before the first frame update
+
+    private bool _isProfilesGenerated;
     void Start()
     {
         
@@ -17,6 +20,7 @@ public class PatientManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (_isProfilesGenerated) GenerateProfiles();
         if (AvailablePatientPositions == null)
             GenerateAvailablePatients();
     }
@@ -48,6 +52,18 @@ public class PatientManager : MonoBehaviour
         foreach (var sp in PatientStaticData.ListOfAvailablePatientSpawnPoints)
         {
             AvailablePatientPositions.Add(sp);
+        }
+    }
+
+    private void GenerateProfiles()
+    {
+        foreach (var p in Photos)
+        {
+            var pat = PatientStaticData.PatientEmptyProfiles[p.name]; 
+            pat.Photo = p;
+            if (PatientStaticData.PatientProfiles == null)
+                PatientStaticData.PatientProfiles = new List<PatientProfile>();
+            PatientStaticData.PatientProfiles.Add(pat);
         }
     }
 }
