@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using StaticData;
 using UnityEngine;
 using Random = System.Random;
 
@@ -27,8 +28,10 @@ namespace UserData
       return Patient.InitialPaid;
     }
 
-    public void IncreaseStress(float stressPoints)
+    public void IncreaseStress(float deltaTime, Disease disease)
     {
+      var diseaseLvl = GetPatientDiseases()[disease];
+      var stressPoints = PatientStaticData.StressPerSecond * deltaTime * diseaseLvl;
       StressPercent += stressPoints;
     }
 
