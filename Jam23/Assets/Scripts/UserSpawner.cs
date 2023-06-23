@@ -4,10 +4,8 @@ public class UserSpawner : MonoBehaviour
 {
     public GameObject[] Spawns;
 
-    private void Awake()
-    {
+    private void Awake() =>
         GameObject.DontDestroyOnLoad(gameObject);
-    }
 
     public Transform SpawnPoint()
     {
