@@ -9,7 +9,7 @@ public class DiseasePanel : MonoBehaviour
     public Image Image;
     public Text Text;
 
-    private Color InitialColor = new Color(255,255,255, 100);
+    private Color InitialColor = new Color(255,255,255, 50);
 
     public DiseaseData DiseaseData;
     
@@ -28,7 +28,7 @@ public class DiseasePanel : MonoBehaviour
             //Debug.Log($"Data: {DiseaseData.Disease}");
             Image.color = DiseaseData.Color;
             var str = StoryGenerator.GenerateDiseaseAnnotation(DiseaseData);
-            Debug.Log($"123 || {str}");
+            //Debug.Log($"123 || {str}");
             Text.text = str;
         }
         else
@@ -36,7 +36,5 @@ public class DiseasePanel : MonoBehaviour
             Text.text = "";
             Image.color = InitialColor;
         }
-        
-        Debug.Log($"||| {Text.text}");
     }
 }

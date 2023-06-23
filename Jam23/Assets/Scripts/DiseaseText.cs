@@ -7,6 +7,7 @@ using UnityEngine.UI;
 
 public class DiseaseText : MonoBehaviour
 {
+    public Text text;
     // Start is called before the first frame update
     void Start()
     {
@@ -31,5 +32,6 @@ public class DiseaseText : MonoBehaviour
         // }
         //
         // Text.text = t.ToString();
+        //text.text = "123123";
     }
 }
