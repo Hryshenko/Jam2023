@@ -111,12 +111,19 @@ public class UserManager : MonoBehaviour
         if (CurrentPatient.CheckIsTrigger(diseaseArea))
             BeginStress(diseaseArea);
     }
-
-    public void ExitStressArea()
+    
+    public void EntryAnyStressAreaTestOnly()
     {
+        var diseaseArea = Disease.Depression;
         if (CurrentPatient == null)
             return;
 
+        if (CurrentPatient.CheckIsTrigger(diseaseArea))
+            BeginStress(diseaseArea);
+    }
+
+    public void ExitStressArea()
+    {
         _isPatientStress = false;
         _stressBecouse = Disease.None;
         Debug.Log("Stress ended");

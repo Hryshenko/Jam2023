@@ -31,7 +31,7 @@ namespace UserData
       }
       
       for (var i = 0; i < countOfDeseases; i++)
-        Diseases.Add((Disease) rand.Next(1, difficultyLvl + 1));
+        Diseases.Add((Disease) rand.Next(1, PatientStaticData.CountOfDiseases + 1));
     }
   }
 }

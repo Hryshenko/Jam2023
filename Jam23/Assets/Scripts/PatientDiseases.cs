@@ -30,7 +30,7 @@ public class PatientDiseases : MonoBehaviour
         var t = new StringBuilder();
         foreach (var pair in dis)
         {
-            t.AppendLine($"Disease: {pair.Key} \t lvl: {pair.Value}");
+            t.AppendLine($"{pair.Key} \t lvl: {pair.Value}");
         }
 
         Text.text = t.ToString();
