@@ -5,7 +5,7 @@ namespace StaticData
 {
   public static class PatientStaticData
   {
-    public static float PickUpRange = 10f;
+    public static float PickUpRange = 20f;
     public static int CountOfDiseases = 6;
 
     public static float StressIncreasePerRotateWithED = 50f;
