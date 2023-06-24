@@ -16,7 +16,7 @@ public class UserManager : MonoBehaviour
     
     public PickedPatient CurrentPatient;
 
-    public GameObject PatientHistory;
+    public PatientHistoryPanel PatientHistoryPanel;
 
 
     public int Money
@@ -68,7 +68,7 @@ public class UserManager : MonoBehaviour
         {
             CurrentPatient = new PickedPatient(patient, Time.time, GetCarPos());
             Debug.Log($"InitialPaid: {patient.InitialPaid}");
-            PatientHistory.SetActive(true);
+            PatientHistoryPanel.EnableCart(this, 1);
             return;
         }
     }
