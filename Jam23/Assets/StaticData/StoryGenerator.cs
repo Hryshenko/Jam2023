@@ -86,7 +86,7 @@ namespace StaticData
       { Disease.Depression, "уникайте води" },
       { Disease.Phobia, "унекайте темряви" },
       { Disease.Anxiety, "уникайте мостів" },
-      { Disease.Stress, "уникайте швидкості вище 70км/г" },
+      { Disease.Stress, "уникайте швидкості вище 110км/г" },
       { Disease.ED, "уникайте різких поворотів ліворуч" },
     };
 

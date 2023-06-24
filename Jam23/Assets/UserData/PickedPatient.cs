@@ -60,7 +60,7 @@ namespace UserData
     private void GenerateExpectedArrivalTimeTime()
     {
       var rand = new Random();
-      var time = rand.Next(30, 70) + Time.time;
+      var time = rand.Next(50, 80) + Time.time;
       ExpectedArrivalTime = time;
     }
 

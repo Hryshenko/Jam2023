@@ -20,7 +20,7 @@ public class SpeedCheck : MonoBehaviour
             return;
 
         Debug.LogWarning(SelectedCar.SpeedInHour);
-        if (SelectedCar.SpeedInHour < 70)
+        if (SelectedCar.SpeedInHour < 110)
         {
             if (_isInStress)
             {
