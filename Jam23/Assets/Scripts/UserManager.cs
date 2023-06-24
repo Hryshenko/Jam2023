@@ -112,6 +112,7 @@ public class UserManager : MonoBehaviour
             Destroy(go.gameObject);
 
         MarkerHolder.Instance.RemoveObjectiveMarker();
+        MissionsController.Instance.ShowMissions();
 
         CurrentPatient = null;
         Health--;

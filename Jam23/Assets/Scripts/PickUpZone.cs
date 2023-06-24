@@ -17,6 +17,7 @@ public class PickUpZone : MonoBehaviour
             var go = Instantiate(FinishZoneObject);
             FinishZoneObject.transform.position = new Vector3(um.CurrentPatient.Destination.x, 5, um.CurrentPatient.Destination.y);
             MarkerHolder.Instance.Set(go);
+            MissionsController.Instance.HideMissions();
         }
     }
 }

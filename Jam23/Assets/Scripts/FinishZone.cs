@@ -9,5 +9,6 @@ public class FinishZone : MonoBehaviour
         other.gameObject.GetComponent<UserManager>().DropPatient();
         MarkerHolder.Instance.RemoveObjectiveMarker();
         Destroy(gameObject);
+        MissionsController.Instance.ShowMissions();
     }
 }
