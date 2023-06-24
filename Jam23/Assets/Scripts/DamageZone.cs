@@ -7,7 +7,7 @@ public class DamageZone : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         var um = other.gameObject.GetComponent<UserManager>();
-        if (um == null)
+        if (um?.CurrentPatient == null)
             return;
 
         if (um.CurrentPatient.Patient.Diseases[0] != diseaseArea)
@@ -19,7 +19,7 @@ public class DamageZone : MonoBehaviour
     private void OnTriggerExit(Collider other)
     {
         var um = other.gameObject.GetComponent<UserManager>();
-        if (um == null)
+        if (um?.CurrentPatient == null)
             return;
 
         if (um.CurrentPatient.Patient.Diseases[0] != diseaseArea)
