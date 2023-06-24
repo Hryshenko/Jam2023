@@ -32,6 +32,11 @@ public class CardDisable : MonoBehaviour
         yield break;
     }
 
+    public void EnablingAndDisablingCart(int time)
+    {
+        StartCoroutine(Enabling(time));
+    }
+
     public IEnumerator Enabling(int time)
     {
         float currentTime = 0;
