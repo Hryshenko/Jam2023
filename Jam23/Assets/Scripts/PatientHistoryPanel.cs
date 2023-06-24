@@ -17,8 +17,8 @@ public class PatientHistoryPanel : MonoBehaviour
         if (_group == null)
             _group = gameObject.AddComponent<CanvasGroup>();
         
-        Image.sprite = null;
-        Text.text = "";
+        //Image.sprite = null;
+        //Text.text = "";
         _group.alpha = 0;
     }
 
@@ -34,8 +34,8 @@ public class PatientHistoryPanel : MonoBehaviour
     
     public void EnableCart(UserManager manager, int time)
     {
-        Debug.Log(UserManager == null);//true
-        
+        //Debug.LogError(UserManager == null);//true
+        Debug.LogWarning("StartHistory");
         var data = manager.GetDiseaseStory();
         
         Image.sprite = data.Photo;
