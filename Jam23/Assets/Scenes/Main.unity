@@ -54372,6 +54372,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 338738166582143579, guid: c135a6c929970584c9e977a133977731,
         type: 3}
+      propertyPath: m_Text
+      value: "\u0413\u0440\u043E\u0448\u0456: 0"
+      objectReference: {fileID: 0}
+    - target: {fileID: 338738166582143579, guid: c135a6c929970584c9e977a133977731,
+        type: 3}
       propertyPath: m_FontData.m_Font
       value: 
       objectReference: {fileID: 12800000, guid: 3750c318f40cab44a97d3a81beaefeb3,
@@ -58831,6 +58836,16 @@ PrefabInstance:
       propertyPath: m_Mass
       value: 1400
       objectReference: {fileID: 0}
+    - target: {fileID: 82147783219756112, guid: c696fb0ff23c67d46885a67b29165225,
+        type: 3}
+      propertyPath: m_Volume
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 82727440839936008, guid: c696fb0ff23c67d46885a67b29165225,
+        type: 3}
+      propertyPath: m_Volume
+      value: 0.1
+      objectReference: {fileID: 0}
     - target: {fileID: 114007319511771520, guid: c696fb0ff23c67d46885a67b29165225,
         type: 3}
       propertyPath: CarConfig.MaxRPM
@@ -59301,8 +59316,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: f008857e434b98b4eaabda1fd6af3059, type: 3}
-  m_Type: 0
+  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4

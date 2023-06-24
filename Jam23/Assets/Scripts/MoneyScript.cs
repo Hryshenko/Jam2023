@@ -1,11 +1,11 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class MoneyScript : MonoBehaviour
 {
-    private const string _text = "Money: ";
+    private const string _text = "Гроші: ";
     public UserManager _userManager;
 
     public Text UserMoney;
