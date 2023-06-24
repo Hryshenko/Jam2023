@@ -26,7 +26,6 @@ public class MainUI : MonoBehaviour
         UICamera.SetActive(false);
         GameHud.SetActive(true);
 
-        //AudioManager.Instance.PlayClick();
         MainController.Instance.StartGame();
     }
 
@@ -42,7 +41,6 @@ public class MainUI : MonoBehaviour
 
     public void ExitGame()
     {
-        AudioManager.Instance.PlayClick();
         Application.Quit();
     }
 }
