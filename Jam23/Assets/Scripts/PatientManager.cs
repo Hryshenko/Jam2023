@@ -7,8 +7,11 @@ using UserData;
 
 public class PatientManager : MonoBehaviour
 {
-    public List<Vector2> AvailablePatientPositions = new List<Vector2>(){new Vector2(1, 1)}; 
+    public List<Sprite> Photos;
+    public List<Vector2> AvailablePatientPositions; 
     // Start is called before the first frame update
+
+    private bool _isProfilesGenerated;
     void Start()
     {
         
@@ -17,8 +20,9 @@ public class PatientManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!AvailablePatientPositions.Any())
-            AvailablePatientPositions.Add(new Vector2(0, 0));
+        if (!_isProfilesGenerated) GenerateProfiles();
+        if (AvailablePatientPositions == null || AvailablePatientPositions.Count == 0)
+            GenerateAvailablePatients();
     }
 
     public Patient TryGetPatient(Vector2 userPos, int difficultyLvl)
@@ -39,5 +43,30 @@ public class PatientManager : MonoBehaviour
         AvailablePatientPositions.Remove(patientPos);
         Debug.Log($"Available patients: {AvailablePatientPositions.Count}");
         return new Patient(difficultyLvl);
+    }
+
+    private void GenerateAvailablePatients()
+    {
+        AvailablePatientPositions = new List<Vector2>();
+
+        foreach (var sp in PatientStaticData.ListOfAvailablePatientSpawnPoints)
+        {
+            Debug.Log("Add patient");
+            AvailablePatientPositions.Add(sp);
+        }
+    }
+
+    private void GenerateProfiles()
+    {
+        foreach (var p in Photos)
+        {
+            var pat = PatientStaticData.PatientEmptyProfiles[p.name]; 
+            pat.Photo = p;
+            if (PatientStaticData.PatientProfiles == null)
+                PatientStaticData.PatientProfiles = new List<PatientProfile>();
+            PatientStaticData.PatientProfiles.Add(pat);
+        }
+
+        _isProfilesGenerated = true;
     }
 }

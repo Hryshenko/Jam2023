@@ -16,6 +16,8 @@ public class UserManager : MonoBehaviour
     
     public PickedPatient CurrentPatient;
 
+    public PatientHistoryPanel PatientHistoryPanel;
+
 
     public int Money
     {
@@ -67,8 +69,10 @@ public class UserManager : MonoBehaviour
         var patient = PatientManager.TryGetPatient(GetCarPos(), CurrentDifficultyLvl);
         if (patient != null)
         {
-            CurrentPatient = new PickedPatient(patient, Time.time);
+            CurrentPatient = new PickedPatient(patient, Time.time, GetCarPos());
             Debug.LogWarning($"InitialPaid: {patient.InitialPaid}");
+            PatientHistoryPanel.EnableCart(this, 1);
+            return;
         }
         Debug.LogWarning($"No available patient");
     }
@@ -81,9 +85,9 @@ public class UserManager : MonoBehaviour
         return null;
     }
 
-    public string GetDiseaseStory()
+    public PatientStoryData GetDiseaseStory()
     {
-        return "DiseaseStory";
+        return StoryGenerator.GenerateDiseaseStory(this);
     }
 
     public void DropPatient()
@@ -104,6 +108,11 @@ public class UserManager : MonoBehaviour
     {
         CurrentPatient = null;
         Health--;
+
+        if (Health == 0)
+        {
+            LoseGame();
+        }
     }
 
     public void EntryAnyStressArea(Disease diseaseArea)
@@ -174,23 +183,23 @@ public class UserManager : MonoBehaviour
     private void CalculateDifficulty()
     {
         Debug.Log($"Current diffic {CurrentDifficultyLvl}");
-        Debug.Log($"Count {PatientStaticData.DifficultyMilestones.Length}");
-        Debug.Log("");
+        //Debug.Log($"Count {PatientStaticData.DifficultyMilestones.Length}");
+        //Debug.Log("");
         if (CurrentDifficultyLvl > (PatientStaticData.DifficultyMilestones.Length - 1)
         || Money <= PatientStaticData.DifficultyMilestones[CurrentDifficultyLvl])
             return;
 
         Debug.Log("");
         if (Money >= PatientStaticData.FinalPoint)
-            EndGame();
+            WinGame();
         Debug.Log("");
         CurrentDifficultyLvl++;
         CalculateDifficulty();
     }
 
-    private void EndGame()
+    private void WinGame()
     {
-        
+        Debug.Log("Win Game");
     }
 
     private Vector2 GetCarPos()
@@ -203,5 +212,10 @@ public class UserManager : MonoBehaviour
     {
         Debug.Log("End travel");
         CurrentPatient = null;
+    }
+
+    public void LoseGame()
+    {
+        Debug.Log("Death end");
     }
 }
