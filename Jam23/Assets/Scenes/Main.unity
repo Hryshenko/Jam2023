@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.47884, g: 0.8001845, b: 0.90072787, a: 1}
+  m_IndirectSpecularColor: {r: 0.47886068, g: 0.8001851, b: 0.89945406, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -45016,6 +45016,11 @@ PrefabInstance:
       propertyPath: CarConfig.MaxRPM
       value: 3500
       objectReference: {fileID: 0}
+    - target: {fileID: 114087976285063700, guid: c696fb0ff23c67d46885a67b29165225,
+        type: 3}
+      propertyPath: UserManager
+      value: 
+      objectReference: {fileID: 2016590996}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c696fb0ff23c67d46885a67b29165225, type: 3}
 --- !u!1 &2016590987 stripped

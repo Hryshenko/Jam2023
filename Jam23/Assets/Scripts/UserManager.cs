@@ -128,15 +128,13 @@ public class UserManager : MonoBehaviour
         ActiveTriggers.Add(diseaseArea);
     }
 
-    public void TriggerTrigger(Disease dis)
+    public void TriggerTriggerED()
     {
-        if (!CurrentPatient.CheckIsTrigger(dis))
+        if (!CurrentPatient.CheckIsTrigger(Disease.ED))
             return;
         
-        if (dis == Disease.ED )
-        {
-            CurrentPatient.InstantStressIncrease(PatientStaticData.StressIncreasePerRotateWithED);
-        }
+        CurrentPatient.InstantStressIncrease(PatientStaticData.StressIncreasePerRotateWithED);
+        
     }
 
     #region StressTestMethods
