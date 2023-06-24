@@ -24,21 +24,24 @@ public class UserControl : MonoBehaviour
 	
 	private void Update()
 	{
-		secondCollectorTotal += Time.deltaTime;
-		
-		var horizontal = Input.GetAxis("Horizontal");
-		if (horizontal < 0)
-			secondCollectorLeft += Time.deltaTime;
-
-		if (secondCollectorTotal > 1)
+		if (UserManager.CurrentPatient != null)
 		{
-			CheckPercentLeft();
-			pastSecondCollectorTotal = secondCollectorTotal;
-			pastSecondCollectorLeft = secondCollectorLeft;
-			secondCollectorTotal = 0;
-			secondCollectorLeft = 0;
+			secondCollectorTotal += Time.deltaTime;
+
+			var horizontal = Input.GetAxis("Horizontal");
+			if (horizontal < 0)
+				secondCollectorLeft += Time.deltaTime;
+
+			if (secondCollectorTotal > 1)
+			{
+				CheckPercentLeft();
+				pastSecondCollectorTotal = secondCollectorTotal;
+				pastSecondCollectorLeft = secondCollectorLeft;
+				secondCollectorTotal = 0;
+				secondCollectorLeft = 0;
+			}
 		}
-		
+
 		ControlledCar.UpdateControls(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"), Input.GetButton("Jump"));
 	}
 
