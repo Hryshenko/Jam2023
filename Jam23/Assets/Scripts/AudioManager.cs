@@ -62,9 +62,6 @@ namespace Assets.Scripts
             Source.clip = null;
         }
 
-        public void PlayClick() =>
-            AudioManager.Instance.PlayOneShot("Click");
-
         public void PlayMainTheme()
         {
             _currentClip = _currentClip + 1 < BGSounds.Length ? _currentClip + 1 : 0;
