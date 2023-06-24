@@ -30,8 +30,8 @@ namespace UserData
       var initialPaid = Patient.InitialPaid;
 
       var timeLeft = (int)(ExpectedArrivalTime - Time.time);
-        
-      var tax = initialPaid + ExpectedArrivalTime * timeLeft;
+      
+      var tax = initialPaid + 20 * timeLeft;
       return (int)tax;
     }
 

@@ -50,7 +50,12 @@ public class UserManager : MonoBehaviour
     void Update()
     {
         //Money++;
-
+        string a = "";
+        foreach (var trig in ActiveTriggers)
+        {
+            a += trig + " | ";
+        }
+        Debug.LogWarning(a);
         if (_isPatientStress && CurrentPatient != null)
         {
             var deltaTime = Time.deltaTime;
@@ -185,7 +190,7 @@ public class UserManager : MonoBehaviour
     {
         if (CurrentPatient.StressPercent < 100)
             return;
-        
+        Debug.LogError("Die Of Strss");
         CancelPatient();
         Debug.Log("Patient canceled | out of stress");
     }
