@@ -5,10 +5,10 @@ namespace StaticData
 {
   public static class PatientStaticData
   {
-    public static float PickUpRange = 2000000f;
+    public static float PickUpRange = 30f;
     public static int CountOfDiseases = 6;
 
-    public static float StressIncreasePerRotateWithED = 50f;
+    public static float StressIncreasePerRotateWithED = 19f;
     
     public static int[] DifficultyMilestones = new[]
     {
@@ -52,15 +52,15 @@ namespace StaticData
         {
           1, new Dictionary<int, int>()
           {
-            { 1, 50 },
+            { 1, 35 },
             { 2, 100 }
           }
         },
         {
           2, new Dictionary<int, int>()
           {
-            { 1, 33 },
-            { 2, 66 },
+            { 1, 22 },
+            { 2, 63 },
             { 3, 100 }
           }
 
@@ -74,9 +74,9 @@ namespace StaticData
       { 2, 1000 },
     };
 
-    public static float StressPerSecond = 15f;
+    public static float StressPerSecond = 8f;
 
-    public static float MinTravelDistance = 300f;
+    public static float MinTravelDistance = 400f;
 
     public static Dictionary<string, PatientProfile> PatientEmptyProfiles = new Dictionary<string, PatientProfile>()
     {
