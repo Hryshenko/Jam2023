@@ -12,6 +12,7 @@ public class UserManager : MonoBehaviour
 
     public PatientManager PatientManager;
     public Transform UserCar;
+    public MainUI UI;
     
     
     public PickedPatient CurrentPatient;
@@ -200,6 +201,7 @@ public class UserManager : MonoBehaviour
     private void WinGame()
     {
         Debug.Log("Win Game");
+        UI.FinishGame(true);
     }
 
     private Vector2 GetCarPos()
@@ -217,5 +219,6 @@ public class UserManager : MonoBehaviour
     public void LoseGame()
     {
         Debug.Log("Death end");
+        UI.FinishGame(false);
     }
 }

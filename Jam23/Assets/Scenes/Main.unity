@@ -2664,6 +2664,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 120959751}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &121102197 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3561245728702906101, guid: e42581ec28cffea42ae75d6030dea783,
+    type: 3}
+  m_PrefabInstance: {fileID: 773899105}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9706462f583124e4fade5cdd071752cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &122204202
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -43200,6 +43212,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PatientManager: {fileID: 1063772258}
   UserCar: {fileID: 2016590995}
+  UI: {fileID: 121102197}
   PatientHistoryPanel: {fileID: 1355005287}
   Health: 3
 --- !u!4 &2017527759 stripped
