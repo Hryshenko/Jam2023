@@ -23,6 +23,8 @@ public class PickUpZone : MonoBehaviour
 
             if (um.CurrentPatient.Patient.Diseases[0] == Disease.Stress)
                 other.gameObject.AddComponent<SpeedCheck>();
+
+            ShowHideController.Instance.Stress.ShowUI();
         }
     }
 }

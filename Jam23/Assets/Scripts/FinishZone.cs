@@ -14,6 +14,8 @@ public class FinishZone : MonoBehaviour
 
         MarkerHolder.Instance.RemoveObjectiveMarker();
         MissionsController.Instance.ShowMissions();
+        ShowHideController.Instance.Stress.HideUI();
+
         um.DropPatient();
 
         Destroy(gameObject);
