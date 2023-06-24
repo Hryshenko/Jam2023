@@ -51,7 +51,6 @@ public class PatientHistoryPanel : MonoBehaviour
         {
             currentTime += Time.deltaTime;
             _group.alpha = Mathf.Lerp(1, 0, (currentTime / time));
-            Debug.LogError(_group.alpha);
             yield return null;
 
         }

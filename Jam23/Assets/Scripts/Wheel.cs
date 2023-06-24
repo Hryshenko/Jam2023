@@ -69,36 +69,6 @@ public struct Wheel
 	/// <summary>
 	/// Update visual logic (Transform, FX).
 	/// </summary>
-	public void UpdateVisual ()
-	{
-		UpdateTransform ();
-
-		if (WheelCollider.isGrounded && CurrentMaxSlip > SlipForGenerateParticle)
-		{
-			//Emit particle.
-			var particles = FXController.GetAspahaltParticles;
-			var point = WheelCollider.transform.position;
-			point.y = Hit.point.y;
-			particles.transform.position = point;
-			particles.Emit (1);
-
-			if (Trail == null)
-			{
-				//Get free or create trail.
-				HitPoint = WheelCollider.transform.position;
-				HitPoint.y = Hit.point.y;
-				Trail = FXController.GetTrail (HitPoint);
-				Trail.transform.SetParent (WheelCollider.transform);
-				Trail.transform.localPosition += TrailOffset;
-			}
-		}
-		else if (Trail != null)
-		{
-			//Set trail as free.
-			FXController.SetFreeTrail (Trail);
-			Trail = null;
-		}
-	}
 
 	public void UpdateTransform ()
 	{

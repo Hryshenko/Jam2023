@@ -114,6 +114,10 @@ public class UserManager : MonoBehaviour
         MarkerHolder.Instance.RemoveObjectiveMarker();
         MissionsController.Instance.ShowMissions();
 
+
+        if (CurrentPatient.Patient.Diseases[0] == Disease.Stress)
+            Destroy(gameObject.GetComponent<SpeedCheck>());
+
         CurrentPatient = null;
         Health--;
 

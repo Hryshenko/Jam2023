@@ -1,14 +1,21 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UserData;
 
 public class FinishZone : MonoBehaviour
 {
     private void OnTriggerEnter(Collider other)
     {
-        other.gameObject.GetComponent<UserManager>().DropPatient();
+        var um = other.gameObject.GetComponent<UserManager>();
+        um.DropPatient();
+
+        if (um.CurrentPatient.Patient.Diseases[0] == Disease.Stress)
+            Destroy(other.gameObject.GetComponent<SpeedCheck>());
+
         MarkerHolder.Instance.RemoveObjectiveMarker();
-        Destroy(gameObject);
         MissionsController.Instance.ShowMissions();
+
+        Destroy(gameObject);
     }
 }

@@ -15,9 +15,14 @@ public class PickUpZone : MonoBehaviour
         {
             um.GetNewPatient();
             var go = Instantiate(FinishZoneObject);
+            
             FinishZoneObject.transform.position = new Vector3(um.CurrentPatient.Destination.x, 5, um.CurrentPatient.Destination.y);
+            
             MarkerHolder.Instance.Set(go);
             MissionsController.Instance.HideMissions();
+
+            if (um.CurrentPatient.Patient.Diseases[0] == Disease.Stress)
+                other.gameObject.AddComponent<SpeedCheck>();
         }
     }
 }

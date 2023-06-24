@@ -49,9 +49,6 @@ public class UserControl : MonoBehaviour
 	{
 		var p = (pastSecondCollectorLeft + secondCollectorLeft) / (pastSecondCollectorTotal + secondCollectorTotal);
 		if (p > 0.5)
-		{
 			UserManager.TriggerTriggerED();
-			Debug.LogWarning($"LeftPercent = {p}");
-		}
 	}
 }

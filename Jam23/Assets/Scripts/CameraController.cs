@@ -15,7 +15,7 @@ public class CameraController : MonoBehaviour
 	CarController TargetCar { get { return MainController.PlayerCar; } }
 	MainController MainController { get { return MainController.Instance; } }
 
-	private float SqrMinDistance = 0.1f;
+	private float SqrMinDistance = 0.05f;
 
 	Vector3 TargetPoint
 	{
