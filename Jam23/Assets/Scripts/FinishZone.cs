@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class FinishZone : MonoBehaviour
 {
-    private void OnCollisionEnter(Collision collision) =>
-        collision.gameObject.GetComponent<UserManager>().DropPatient();
+    private void OnTriggerEnter(Collider other)
+    {
+        other.gameObject.GetComponent<UserManager>().DropPatient();
+        Destroy(gameObject);
+    }
 }

@@ -71,7 +71,7 @@ public class UserManager : MonoBehaviour
         {
             CurrentPatient = new PickedPatient(patient, Time.time, GetCarPos());
             Debug.LogWarning($"InitialPaid: {patient.InitialPaid}");
-            PatientHistoryPanel.EnableCart(this, 1);
+            //PatientHistoryPanel.EnableCart(this, 1);
             return;
         }
         Debug.LogWarning($"No available patient");
