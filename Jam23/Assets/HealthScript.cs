@@ -13,7 +13,7 @@ public class HealthScript : MonoBehaviour
     public List<GameObject> HeartPlaces;
     private List<GameObject> Hearts;
 
-    private int currentHearts;
+    private int currentHearts = 0;
     // Start is called before the first frame update
     void Start()
     {
@@ -28,7 +28,8 @@ public class HealthScript : MonoBehaviour
         {
             return;
         }
-        else if (health > currentHearts)
+        
+        if (health > currentHearts)
         {
             var g = Instantiate(Heart, HeartPlaces[currentHearts].transform);
             Hearts.Add(g);
@@ -38,7 +39,9 @@ public class HealthScript : MonoBehaviour
         }
         else
         {
-            Destroy(Hearts.Last());
+            var r = Hearts[currentHearts - 1];
+            Destroy(r);
+            Hearts.RemoveAt(currentHearts - 1);
             currentHearts--;
             return;
         }

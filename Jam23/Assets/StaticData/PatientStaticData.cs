@@ -10,6 +10,11 @@ namespace StaticData
 
     public static float StressIncreasePerRotateWithED = 24f;
     
+    public static float StressPerSecond = 8f;
+
+    public static float MinTravelDistance = 400f;
+    
+    
     public static int[] DifficultyMilestones = new[]
     {
       1000, 5000
@@ -73,10 +78,6 @@ namespace StaticData
       { 1, 750 },
       { 2, 1000 },
     };
-
-    public static float StressPerSecond = 8f;
-
-    public static float MinTravelDistance = 400f;
 
     public static Dictionary<string, PatientProfile> PatientEmptyProfiles = new Dictionary<string, PatientProfile>()
     {
