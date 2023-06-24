@@ -107,6 +107,12 @@ public class UserManager : MonoBehaviour
 
     public void CancelPatient()
     {
+        var go = GameObject.FindObjectOfType<FinishZone>();
+        if (go != null)
+            Destroy(go.gameObject);
+
+        MarkerHolder.Instance.RemoveObjectiveMarker();
+
         CurrentPatient = null;
         Health--;
 
