@@ -179,8 +179,8 @@ public class UserManager : MonoBehaviour
     private void CalculateDifficulty()
     {
         Debug.Log($"Current diffic {CurrentDifficultyLvl}");
-        Debug.Log($"Count {PatientStaticData.DifficultyMilestones.Length}");
-        Debug.Log("");
+        //Debug.Log($"Count {PatientStaticData.DifficultyMilestones.Length}");
+        //Debug.Log("");
         if (CurrentDifficultyLvl > (PatientStaticData.DifficultyMilestones.Length - 1)
         || Money <= PatientStaticData.DifficultyMilestones[CurrentDifficultyLvl])
             return;
