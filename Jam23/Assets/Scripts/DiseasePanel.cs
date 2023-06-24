@@ -9,7 +9,7 @@ public class DiseasePanel : MonoBehaviour
     public Image Image;
     public Text Text;
 
-    private Color InitialColor = new Color(255,255,255, 50);
+    private Color InitialColor = new Color(255,255,255, 0);
 
     public DiseaseData DiseaseData;
     
@@ -35,6 +35,7 @@ public class DiseasePanel : MonoBehaviour
         {
             Text.text = "";
             Image.color = InitialColor;
+            
         }
     }
 }
