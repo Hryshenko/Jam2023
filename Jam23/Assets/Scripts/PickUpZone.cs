@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PickUpZone : MonoBehaviour
 {
-    private void OnCollisionEnter(Collision collision) =>
-        collision.gameObject.GetComponent<UserManager>().GetNewPatient();
+    private void OnTriggerEnter(Collider other)
+    {
+        other.gameObject.GetComponent<UserManager>()?.GetNewPatient();
+    }
 }

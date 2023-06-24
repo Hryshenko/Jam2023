@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class CardDisable : MonoBehaviour
 {
-    private CanvasGroup _group;
+    public CanvasGroup _group;
     private void Start()
     {
         _group = gameObject.GetComponent<CanvasGroup>();
@@ -47,6 +47,8 @@ public class CardDisable : MonoBehaviour
             yield return null;
 
         }
+
+        yield return new WaitForSeconds(6);
 
         DisableCart(time);
 

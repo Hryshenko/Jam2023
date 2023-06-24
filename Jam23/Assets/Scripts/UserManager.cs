@@ -59,15 +59,18 @@ public class UserManager : MonoBehaviour
     public void GetNewPatient()
     {
         if (CurrentPatient != null)
+        {
+            Debug.LogWarning($"CurrentPatient != null");
             return;
+        }
         
         var patient = PatientManager.TryGetPatient(GetCarPos(), CurrentDifficultyLvl);
         if (patient != null)
         {
             CurrentPatient = new PickedPatient(patient, Time.time);
-            Debug.Log($"InitialPaid: {patient.InitialPaid}");
+            Debug.LogWarning($"InitialPaid: {patient.InitialPaid}");
         }
-        Debug.Log($"No available patient");
+        Debug.LogWarning($"No available patient");
     }
 
     public Dictionary<Disease, int> GetPatientDiseases()
