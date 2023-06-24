@@ -20034,8 +20034,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 906523501}
+  - component: {fileID: 906523502}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: MissionsController
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -20049,12 +20050,39 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 906523500}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -616, y: 0, z: -777}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &906523502
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 906523500}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 831e8dee03768a34fababd95214c7754, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Missions:
+  - {fileID: 1210770487}
+  - {fileID: 990460944}
+  - {fileID: 1925291289}
+  - {fileID: 519101302}
+  - {fileID: 18745015}
+  - {fileID: 1531310392}
+  - {fileID: 1080952980}
+  - {fileID: 1793989120}
+  - {fileID: 1113192062}
+  - {fileID: 565836287}
+  - {fileID: 1596216330}
+  - {fileID: 1083890394}
+  - {fileID: 1934616586}
+  - {fileID: 1121010143}
 --- !u!1001 &907118351
 PrefabInstance:
   m_ObjectHideFlags: 0
