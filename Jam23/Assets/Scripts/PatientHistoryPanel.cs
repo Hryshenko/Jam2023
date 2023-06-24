@@ -17,8 +17,8 @@ public class PatientHistoryPanel : MonoBehaviour
         if (_group == null)
             _group = gameObject.AddComponent<CanvasGroup>();
         
-        //Image.sprite = null;
-        //Text.text = "";
+        Image.sprite = null;
+        Text.text = "";
         _group.alpha = 0;
     }
 
