@@ -14,8 +14,9 @@ public class PickUpZone : MonoBehaviour
         if (um.CurrentPatient == null)
         {
             um.GetNewPatient();
-            Instantiate(FinishZoneObject);
+            var go = Instantiate(FinishZoneObject);
             FinishZoneObject.transform.position = new Vector3(um.CurrentPatient.Destination.x, 5, um.CurrentPatient.Destination.y);
+            MarkerHolder.Instance.Set(go);
         }
     }
 }
